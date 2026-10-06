@@ -1,0 +1,22 @@
+{
+  "name": "shetrust",
+  "version": "2.0.0",
+  "description": "SheTrust – Crowd-Verified Women's Safety Trust Index for Bengaluru (Go backend + React frontend)",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev:web\"",
+    "dev:api": "cd backend && go run ./cmd/api",
+    "dev:web": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "build:api": "cd backend && go build -o bin/api ./cmd/api",
+    "seed": "cd backend && go run ./cmd/seed",
+    "test:api": "cd backend && go test ./...",
+    "start": "cd backend && go run ./cmd/api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

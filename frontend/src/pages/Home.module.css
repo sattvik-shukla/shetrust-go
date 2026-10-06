@@ -1,0 +1,344 @@
+.page { overflow-x: hidden; }
+
+/* ── Hero ──────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 60px) 60px 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 75% 60% at 55% 40%, rgba(230,59,111,0.11) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 15% 80%, rgba(245,166,35,0.05) 0%, transparent 60%),
+    var(--bg);
+}
+.heroGrid {
+  position: absolute; inset: 0; z-index: 1; opacity: 0.03;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.heroContent { position: relative; z-index: 2; flex: 1; max-width: 620px; }
+
+.heroBadge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--rose-faint); border: 1px solid rgba(230,59,111,0.22);
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.07em;
+  color: var(--rose-light); text-transform: uppercase;
+  animation: fadeUp 0.7s ease both;
+}
+.heroBadgeDot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--rose);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 900; line-height: 1.07;
+  animation: fadeUp 0.7s 0.08s ease both;
+}
+.heroTitle em { font-style: italic; color: var(--rose); }
+
+.heroSub {
+  margin-top: 22px; font-size: 1.05rem; line-height: 1.72;
+  color: var(--text-muted); max-width: 500px;
+  animation: fadeUp 0.7s 0.16s ease both;
+}
+
+.heroActions {
+  display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap;
+  animation: fadeUp 0.7s 0.24s ease both;
+}
+
+.statsRow {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-top: 48px; padding-top: 36px;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.7s 0.32s ease both;
+}
+.statCard {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+}
+.statIcon { font-size: 1.1rem; }
+.statNum  { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 900; color: var(--rose); line-height: 1; }
+.statLabel{ font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+
+/* Hero visual card */
+.heroVisual {
+  position: relative; z-index: 2; flex-shrink: 0; width: min(380px, 38vw);
+  animation: fadeLeft 0.9s 0.4s ease both;
+}
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.heroCard {
+  background: rgba(17,17,24,0.92); border: 1px solid var(--border);
+  border-radius: var(--r-xl); overflow: hidden;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(230,59,111,0.08);
+}
+.heroCardHeader {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; border-bottom: 1px solid var(--border);
+}
+.heroCardTitle { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+.heroPulse { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; color: var(--safe); font-weight: 600; }
+.heroPulseDot { width: 6px; height: 6px; border-radius: 50%; background: var(--safe); animation: pulse 1.5s ease infinite; }
+
+.heroSlots {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+.heroSlot {
+  padding: 8px 4px; text-align: center; font-size: 0.62rem;
+  font-weight: 600; color: var(--text-muted); border-right: 1px solid var(--border);
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.heroSlot:last-child { border-right: none; }
+.heroSlotActive { background: var(--rose-faint); color: var(--rose); }
+.nowBadge {
+  font-size: 0.55rem; background: var(--rose); color: #fff;
+  padding: 1px 5px; border-radius: 100px; font-weight: 700;
+}
+
+.heroLocList { padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+.heroLocRow {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.78rem;
+}
+.heroLocName { flex: 1; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.heroCardBtn { width: calc(100% - 32px); margin: 4px 16px 16px; }
+
+/* ── Shared section styles ─────────────────────────────────────────── */
+.howSection, .formulaSection, .trustSection { padding: 100px 60px; }
+.howSection   { background: var(--bg2); }
+.formulaSection { background: var(--bg); }
+.trustSection { background: var(--bg2); }
+
+.sectionLabel {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--rose); margin-bottom: 12px;
+}
+.sectionTitle {
+  font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; margin-bottom: 14px;
+}
+.sectionSub {
+  color: var(--text-muted); font-size: 1rem; line-height: 1.7;
+  max-width: 520px; margin-bottom: 52px;
+}
+
+/* Steps */
+.stepsGrid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+.stepCard {
+  background: var(--card); border: 1px solid var(--border); padding: 32px 24px;
+  transition: all 0.25s; position: relative; overflow: hidden;
+}
+.stepCard:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.stepCard:last-child  { border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.stepCard:hover { background: var(--rose-faint); border-color: rgba(230,59,111,0.28); }
+
+.stepNum {
+  font-family: var(--font-mono); font-size: 2.4rem; font-weight: 500;
+  color: rgba(230,59,111,0.14); line-height: 1; margin-bottom: 16px;
+}
+.stepIcon  { font-size: 1.6rem; margin-bottom: 12px; }
+.stepTitle { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+.stepDesc  { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+/* Formula */
+.formulaBox {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 32px 40px; text-align: center;
+  margin-bottom: 36px;
+}
+.formulaText {
+  font-family: var(--font-mono); font-size: 1rem; color: var(--text); line-height: 2;
+}
+.formulaText strong { color: var(--rose); }
+
+.weightsGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+.weightCard {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 24px; text-align: center; transition: all 0.25s;
+}
+.weightCard:hover { border-color: rgba(230,59,111,0.35); background: var(--rose-faint); }
+.weightIcon { font-size: 1.6rem; margin-bottom: 10px; }
+.weightPct  { font-family: var(--font-serif); font-size: 2rem; font-weight: 900; color: var(--rose); line-height: 1; }
+.weightLabel{ font-size: 0.82rem; font-weight: 700; margin-top: 6px; }
+.weightDesc { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+.catsRow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.catCard {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 28px; border-radius: var(--r-lg); font-size: 1rem;
+}
+
+/* Trust */
+.trustGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.trustCard {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 28px 24px; transition: all 0.25s;
+}
+.trustCard:hover { border-color: rgba(230,59,111,0.28); }
+.trustNum {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--rose-faint); border: 1px solid rgba(230,59,111,0.28);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+  color: var(--rose); margin-bottom: 16px;
+}
+.trustTitle { font-weight: 700; font-size: 0.92rem; margin-bottom: 8px; }
+.trustDesc  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+/* CTA */
+.ctaSection {
+  padding: 120px 60px; text-align: center;
+  background: linear-gradient(135deg, rgba(230,59,111,0.1) 0%, rgba(245,166,35,0.05) 100%);
+  border-top: 1px solid var(--border);
+}
+.ctaTitle { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; margin-bottom: 16px; }
+.ctaSub   { font-size: 1rem; color: var(--text-muted); margin-bottom: 40px; }
+.ctaActions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* Footer */
+.footer {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 32px 60px; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footerLogo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-serif); font-weight: 900; font-size: 1.1rem;
+}
+.footerDot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); display: block; }
+.footerLinks { display: flex; gap: 20px; }
+.footerLinks a { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+.footerLinks a:hover { color: var(--rose); }
+.footerNote { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .heroVisual { display: none; }
+  .stepsGrid, .weightsGrid, .trustGrid { grid-template-columns: repeat(2, 1fr); }
+  .stepCard:first-child, .stepCard:last-child { border-radius: var(--r-lg); }
+  .stepCard { border-radius: var(--r-lg); }
+}
+@media (max-width: 700px) {
+  .hero, .howSection, .formulaSection, .trustSection, .ctaSection { padding: 80px 24px; }
+  .statsRow { grid-template-columns: repeat(2, 1fr); }
+  .stepsGrid, .weightsGrid, .trustGrid { grid-template-columns: 1fr; }
+  .catsRow { grid-template-columns: 1fr; }
+  .footer { padding: 28px 24px; flex-direction: column; }
+}
+
+
+/* 🔥 FLOW DESIGN */
+.stiFlow {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+/* vertical connecting line */
+.stiLine {
+  background: linear-gradient(
+    to bottom,
+    var(--rose) 0%,
+    var(--rose) 40%,
+    transparent 100%
+  );
+  animation: flowLine 3s infinite linear;
+}
+
+@keyframes flowLine {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.2; }
+}
+
+/* each step */
+.stiNode {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+/* glowing icon */
+.stiIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--rose-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  border: 1px solid rgba(230,59,111,0.3);
+  box-shadow: 0 0 0 rgba(230,59,111,0.4);
+  transition: all 0.3s ease;
+}
+
+.stiNode:hover .stiIcon {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(230,59,111,0.4);
+}
+
+/* text */
+.stiContent h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.stiContent p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* final result box */
+.stiResult {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(230,59,111,0.12), rgba(245,166,35,0.08));
+  border: 1px solid rgba(230,59,111,0.25);
+}
+
+.stiResult span {
+  font-size: 1.8rem;
+}
+
+/* 📱 mobile tweak */
+@media (max-width: 600px) {
+  .stiFlow {
+    max-width: 100%;
+  }
+}
+
+.sti-card:hover {
+  transform: translateY(-5px);
+}
+
+.sti-card span {
+  font-size: 2rem;
+}

@@ -1,0 +1,274 @@
+.page {
+  display: flex;
+  height: 100vh;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────── */
+.sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Search */
+.searchWrap {
+  padding: 16px 16px 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  transition: border-color 0.2s;
+}
+.searchBox:focus-within { border-color: rgba(230,59,111,0.4); }
+
+.searchIcon { font-size: 0.9rem; flex-shrink: 0; }
+
+.searchInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--text);
+  min-width: 0;
+}
+.searchInput::placeholder { color: var(--text-muted); }
+
+.clearBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.searchResults {
+  position: absolute;
+  top: 100%;
+  left: 16px;
+  right: 16px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  z-index: 50;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.searchResult {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background 0.15s;
+  text-align: left;
+}
+.searchResult:last-child { border-bottom: none; }
+.searchResult:hover { background: var(--card-hover); }
+
+.srName  { font-size: 0.82rem; font-weight: 600; }
+.srArea  { font-size: 0.68rem; color: var(--text-muted); margin-top: 1px; }
+.srSTI   { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; margin-left: auto; flex-shrink: 0; }
+
+/* Slot tabs */
+.slotTabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 12px 16px 0;
+  flex-shrink: 0;
+}
+
+.slotTab {
+  padding: 8px 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-right: none;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slotTab:first-child { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.slotTab:last-child  { border-right: 1px solid var(--border); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.slotTabActive { background: var(--rose-faint) !important; color: var(--rose) !important; border-color: var(--rose) !important; z-index: 1; }
+
+/* Control bar */
+.controlBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.controlLeft { display: flex; align-items: center; gap: 8px; }
+.controlRight { display: flex; align-items: center; gap: 4px; }
+
+.loading      { font-size: 0.72rem; color: var(--rose); animation: pulse 1.5s ease infinite; }
+.lastUpdated  { font-size: 0.72rem; color: var(--text-muted); }
+.heatActive   { color: var(--rose) !important; }
+
+/* Location list */
+.locationList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rose) transparent;
+}
+
+.errorMsg {
+  background: var(--risky-bg);
+  border: 1px solid var(--risky-border);
+  color: var(--risky);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* Detail */
+.detailWrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Rate footer */
+.rateFooter {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Map ──────────────────────────────────────────────────────────── */
+.mapWrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* No-token overlay */
+.noTokenBanner {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noTokenCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 40px;
+  max-width: 400px;
+  text-align: center;
+}
+.noTokenIcon  { font-size: 3rem; margin-bottom: 16px; }
+.noTokenTitle { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; margin-bottom: 12px; }
+.noTokenBody  { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.noTokenBody code { font-family: var(--font-mono); font-size: 0.78rem; background: var(--bg2); padding: 2px 6px; border-radius: 4px; }
+
+/* Legend */
+.legend {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  background: rgba(17, 17, 24, 0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  backdrop-filter: blur(12px);
+  z-index: 5;
+}
+.legendTitle {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.legendItem:last-child { margin-bottom: 0; }
+.legendDot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* City badge */
+.cityBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(17,17,24,0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  backdrop-filter: blur(8px);
+  z-index: 5;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 800px) {
+  .page { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    height: 45vh;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .mapWrap { flex: 1; min-height: 0; }
+  .legend  { bottom: 16px; }
+}

@@ -1,0 +1,372 @@
+/* ── Survey Modal ─────────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  width: 100%;
+  max-width: 520px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Header */
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 24px 0;
+}
+
+.modalTitle {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.modalSub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 340px;
+}
+
+/* Steps */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 18px 24px 8px;
+  position: relative;
+}
+
+.stepDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.stepActive {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(230, 59, 111, 0.4);
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 -4px;
+  z-index: 1;
+  transition: background 0.4s;
+}
+
+.stepLineFill {
+  background: var(--rose);
+}
+
+/* Body */
+.body {
+  padding: 20px 24px 24px;
+}
+
+.fieldGroup {
+  margin-bottom: 18px;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* Slot grid */
+.slotGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.slotBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 4px;
+  border-radius: var(--r-md);
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.slotBtn:hover {
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+}
+
+.slotActive {
+  border-color: var(--rose) !important;
+  background: var(--rose-faint) !important;
+  color: var(--rose-light) !important;
+}
+
+.slotIcon {
+  font-size: 1.15rem;
+}
+
+/* Slider */
+.sliderHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sliderVal {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--rose-light);
+}
+
+.sliderHint {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+/* Results */
+.results {
+  margin-top: 8px;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+}
+
+.resultItem:hover {
+  background: var(--card-hover);
+}
+
+.resultName {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.resultArea {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.searching {
+  text-align: center;
+  padding: 14px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.hint {
+  text-align: center;
+  padding: 18px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Submit */
+.submitRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.error {
+  background: var(--risky-bg);
+  border: 1px solid var(--risky-border);
+  color: var(--risky);
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+
+/* Success */
+.successBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.successIcon {
+  font-size: 3rem;
+  animation: pulse 1.2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.successTitle {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.successSub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 360px;
+}
+
+.successActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Weights card */
+.weightsCard {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  text-align: center;
+}
+
+.weightsTitle {
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+  color: var(--rose-light);
+}
+
+.weightsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.weightItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--bg3);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+}
+
+.weightIcon {
+  font-size: 1.1rem;
+}
+
+.weightLabel {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  flex: 1;
+  text-align: left;
+}
+
+.weightVal {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--safe);
+}
+
+.formula {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.r2 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--moderate);
+  margin-bottom: 6px;
+}
+
+.weightsNote {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+
+.weightsLoading {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  padding: 12px;
+}

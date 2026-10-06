@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SheTrust — Offline</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: #0D0D0F; color: #E5E5E5; font-family: system-ui, sans-serif;
+      padding: 24px;
+    }
+    .card {
+      max-width: 380px; width: 100%; text-align: center;
+      background: #1A1A1D; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 32px 24px;
+    }
+    .icon { font-size: 48px; margin-bottom: 16px; }
+    h1 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+    .sub { font-size: 14px; color: #9CA3AF; margin-bottom: 24px; line-height: 1.6; }
+    .section { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 16px; margin-bottom: 12px; text-align: left; }
+    .section-title { font-size: 12px; font-weight: 600; color: #E63B6F; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .contact:last-child { border-bottom: none; }
+    .contact-name { color: #9CA3AF; }
+    .contact-num { color: #E5E5E5; font-weight: 600; }
+    .tip { font-size: 13px; color: #9CA3AF; padding: 5px 0; line-height: 1.5; }
+    .tip::before { content: "• "; color: #E63B6F; }
+    .retry-btn {
+      display: block; width: 100%; padding: 12px;
+      background: #E63B6F; color: #fff; border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 20px; padding: 4px 12px; font-size: 12px; color: #EF4444;
+      margin-bottom: 20px;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #EF4444; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🛡️</div>
+    <div class="badge"><span class="dot"></span> No internet connection</div>
+    <h1>You're offline</h1>
+    <p class="sub">SheTrust needs a connection for live safety data. But we've got your back with offline essentials.</p>
+
+    <div class="section">
+      <div class="section-title">🆘 Emergency Contacts</div>
+      <div class="contact"><span class="contact-name">Women's Helpline</span><span class="contact-num">1091</span></div>
+      <div class="contact"><span class="contact-name">Police</span><span class="contact-num">100</span></div>
+      <div class="contact"><span class="contact-name">Ambulance</span><span class="contact-num">108</span></div>
+      <div class="contact"><span class="contact-name">Bengaluru Police</span><span class="contact-num">080-22943225</span></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">💡 Stay Safe Offline</div>
+      <div class="tip">Stay in well-lit, busy areas with other people around</div>
+      <div class="tip">Trust your instincts — move to a populated space if uncomfortable</div>
+      <div class="tip">Share your live location with a trusted contact</div>
+      <div class="tip">Metro stations and malls have security staff — go there if needed</div>
+      <div class="tip">Your SOS button still works — hold it for 3 seconds</div>
+    </div>
+
+    <button class="retry-btn" onclick="window.location.reload()">
+      🔄 Try Again
+    </button>
+  </div>
+</body>
+</html>
